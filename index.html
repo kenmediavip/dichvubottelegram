@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LÚA MEDIA - TELEGRAM SERVICES</title>
+    <title>KEN MEDIA - AUTOMATION TELEGRAM SYSTEM</title>
     <style>
         :root {
             --bg-color: #0b0f19;
-            --card-bg: rgba(25, 32, 50, 0.7);
+            --card-bg: rgba(25, 32, 50, 0.5);
             --primary-neon: #9d4edd;
             --secondary-neon: #00f2fe;
             --text-color: #ffffff;
@@ -26,57 +26,141 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            background: linear-gradient(180deg, #0b0f19 0%, #05070f 100%);
         }
 
-        /* Container chuẩn */
         .container {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Header / Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: radial-gradient(circle at center, rgba(157, 78, 221, 0.15) 0%, transparent 70%);
+        /* Top Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-text h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--secondary-neon);
+        }
+
+        .nav-logo-text span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: block;
+            margin-top: -3px;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary-neon);
+        }
+
+        .btn-nav {
+            padding: 8px 20px;
+            border: 1px solid var(--secondary-neon);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(0, 242, 254, 0.05);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: var(--secondary-neon);
+            color: #000;
+            box-shadow: 0 0 15px var(--secondary-neon);
+        }
+
+        /* Hero Section */
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 50px 20px;
+            flex-wrap: wrap;
+            background: radial-gradient(circle at center, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-main-logo {
+            flex-shrink: 0;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            max-width: 750px;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
             color: #fff;
-            text-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon);
+            text-shadow: 0 0 15px var(--secondary-neon);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--secondary-neon);
-            margin-bottom: 30px;
-            font-weight: 600;
+        .hero-text p.sub {
+            font-size: 1.15rem;
+            color: #fff;
+            margin-bottom: 25px;
+            font-style: italic;
         }
 
-        /* Nút Liên Hệ To Bự */
         .btn-cta {
             display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 14px 35px;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #fff;
             text-decoration: none;
-            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
-            border-radius: 50px;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            background: rgba(11, 15, 25, 0.8);
+            border: 2px solid var(--secondary-neon);
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
             transition: all 0.3s ease;
-            text-transform: uppercase;
         }
 
         .btn-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8);
+            transform: scale(1.03);
+            background: var(--secondary-neon);
+            color: #000;
+            box-shadow: 0 0 25px var(--secondary-neon);
         }
 
         /* Grid Dịch Vụ */
@@ -84,43 +168,40 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
             padding: 25px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--secondary-neon);
-            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.1);
+            box-shadow: 0 5px 25px rgba(0, 242, 254, 0.15);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary-neon);
+        .card-header-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
         }
 
         .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--secondary-neon);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.25rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .card ul {
@@ -128,36 +209,38 @@
         }
 
         .card ul li {
-            margin-bottom: 10px;
-            color: var(--text-muted);
+            margin-bottom: 12px;
+            color: #e2e8f0;
             display: flex;
             align-items: center;
+            font-size: 0.95rem;
         }
 
         .card ul li::before {
             content: '⚡';
             color: var(--primary-neon);
-            margin-right: 10px; /* Sửa lỗi dính chữ ở đây */
+            margin-right: 12px;
             flex-shrink: 0;
+            text-shadow: 0 0 5px var(--primary-neon);
         }
 
-        /* Bảng Giá / Thời gian */
+        /* Bảng Giá */
         .pricing-section {
-            margin-top: 60px;
+            margin-top: 70px;
             text-align: center;
         }
 
         .pricing-section h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 35px;
             color: #fff;
-            text-shadow: 0 0 8px var(--secondary-neon);
+            font-weight: 700;
         }
 
         .price-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
@@ -165,19 +248,35 @@
             background: var(--card-bg);
             border: 1px solid rgba(157, 78, 221, 0.2);
             padding: 30px;
-            border-radius: 12px;
-            width: 300px;
+            border-radius: 14px;
+            width: 340px;
+            text-align: center;
+            position: relative;
         }
 
         .price-box.active {
             border-color: var(--secondary-neon);
-            background: linear-gradient(145deg, rgba(25, 32, 50, 0.9), rgba(11, 15, 25, 0.9));
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .badge-hot {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 242, 254, 0.2);
+            border: 1px solid var(--secondary-neon);
+            color: var(--secondary-neon);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
 
         .price-box h4 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .price-box .duration {
@@ -189,17 +288,32 @@
 
         /* Footer */
         footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            margin-top: 80px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-muted);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        /* Responsive Mobile */
+        /* Svg Icon Pack */
+        .icon-svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--secondary-neon);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
+            header, footer { flex-direction: column; text-align: center; }
+            .nav-menu { display: none; }
+            .hero-container { text-align: center; justify-content: center; }
+            .hero-text { text-align: center; }
+            .hero-text h1 { font-size: 2rem; }
             .btn-cta { width: 100%; text-align: center; }
         }
     </style>
@@ -208,71 +322,106 @@
 
     <div class="container">
         
-        <section class="hero">
-            <h1>QUẢNG CÁO & LÀM BOT</h1>
-            <p>VÀO VIỆC NHANH - GỌN - UY TÍN</p>
-            <a href="https://t.me/TenVipQua" target="_blank" class="btn-cta">🚀 INBOX: @TenVipQua NGAY</a>
+        <header>
+            <div class="nav-logo">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v1H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3V6a4 4 0 0 0-4-4zm-2 5V6a2 2 0 1 1 4 0v1h-4zm-3 4h2v2H7v-2zm8 0h2v2h-2v-2zM9 16h6v1H9v-1z"/></svg>
+                <div class="nav-logo-text">
+                    <h2>KEN MEDIA</h2>
+                    <span>TELEGRAM SERVICES</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+            <a href="https://t.me/TenVipQua" target="_blank" class="btn-nav">[ 💬 LIÊN HỆ NGAY ]</a>
+        </header>
+
+        <section class="hero-container">
+            <div class="hero-main-logo">
+                <svg width="150" height="150" viewBox="0 0 24 24" style="fill: var(--secondary-neon); background: rgba(25, 32, 50, 0.8); padding: 20px; border-radius: 12px; border: 2px solid var(--primary-neon);"><path d="M19 8h-1.07A7.002 7.002 0 0 0 6.07 8H5a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1.07A7.002 7.002 0 0 0 17.93 18H19a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3zM8 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm8 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-4 4c-2.45 0-4.5-1.16-4.5-2.5h9c0 1.34-2.05 2.5-4.5 2.5z"/></svg>
+            </div>
+            <div class="hero-text">
+                <h1>KEN MEDIA - AUTOMATION TELEGRAM SYSTEM</h1>
+                <p class="sub">*Nâng tầm Group/Channel của bạn với Bot thông minh & Giải pháp MMO uy tín.*</p>
+                <a href="https://t.me/TenVipQua" target="_blank" class="btn-cta">[ 🚀 VÀO VIỆC NGAY: @TenVipQua ]</a>
+            </div>
         </section>
 
         <section class="services-grid">
             
             <div class="card">
-                <h3>🤖 LÀM BOT & BÁN SRC</h3>
+                <div class="card-header-box">
+                    <h3>🤖 DỊCH VỤ BOT & SOURCE CODE</h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" style="fill:var(--primary-neon);"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1 .9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6h2v2H9v-2zm4 0h2v2h-2v-2z"/></svg>
+                </div>
                 <ul>
-                    <li>Thiết kế BOT theo yêu cầu</li>
-                    <li>Bán SOURCE BOT chạy mượt</li>
-                    <li>Hỗ trợ cài đặt lên VPS từ A-Z</li>
+                    <li>Thiết kế BOT hệ thống theo yêu cầu</li>
+                    <li>Bán SOURCE BOT chuẩn — Hỗ trợ cài đặt</li>
+                    <li>Tích hợp API mượt mà, bảo mật nguồn code</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3>📢 QUẢNG CÁO & MEM</h3>
+                <div class="card-header-box">
+                    <h3>🏧 BOT RÚT TỰ ĐỘNG</h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" style="fill:var(--secondary-neon);"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                </div>
                 <ul>
-                    <li>Kéo mem Channel/Group target</li>
-                    <li>Treo Banner vị trí đẹp</li>
-                    <li>Ghim bài quảng cáo giá ưu đãi</li>
+                    <li>Bot xử lý rút qua Tên Nhân Vật game</li>
+                    <li>Cấu hình tự động nhận Số Tài Khoản (STK)</li>
+                    <li>Hệ thống vận hành 24/7 ổn định, chính xác</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3>⚙️ TOOL AUTOMATION</h3>
+                <div class="card-header-box">
+                    <h3>🎁 BOT CODE GAME</h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" style="fill:var(--primary-neon);"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.65-.5-.65C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4V8h16v11z"/></svg>
+                </div>
                 <ul>
-                    <li>Tool rải link, bot rải link tự động</li>
-                    <li>Hệ thống CODE & NHIỆM VỤ TYM 💜</li>
-                    <li>Tự động hóa MMO tối ưu chi phí</li>
+                    <li>Hệ thống tự động phát, quản lý CODE GAME</li>
+                    <li>Tool rải link, bot tự động đi rải link target</li>
+                    <li>Tích hợp hệ thống làm NHIỆM VỤ TYM 💜</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3>💳 SET UP CẤU HÌNH</h3>
+                <div class="card-header-box">
+                    <h3>📢 QUẢNG CÁO & MEM</h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" style="fill:var(--secondary-neon);"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
+                </div>
                 <ul>
-                    <li>Thay đổi Tên Nhân Vật theo brand</li>
-                    <li>Tích hợp STK nhận tiền tự động</li>
-                    <li>Hệ thống vận hành 24/7 ổn định</li>
+                    <li>Kéo mem đúng tệp khách hàng mục tiêu</li>
+                    <li>Treo Banner vị trí đẹp trên các Group/Channel</li>
+                    <li>Ghim bài quảng cáo với mức giá ưu đãi nhất</li>
                 </ul>
             </div>
 
         </section>
 
         <section class="pricing-section">
-            <h2>⏱️ THỜI GIAN TRIỂN KHAI LINH HOẠT</h2>
+            <h2>Bảng Giá Dịch Vụ</h2>
             <div class="price-container">
                 <div class="price-box">
                     <h4>GÓI TUẦN</h4>
                     <div class="duration">Chạy TEST / Ngắn hạn</div>
-                    <p style="color: var(--text-muted);">Phù hợp cho các chiến dịch kéo mem cấp tốc, test hiệu quả bot.</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Thích hợp cho chiến dịch kéo mem cấp tốc, test hiệu quả bot.</p>
                 </div>
                 <div class="price-box active">
+                    <span class="badge-hot">PHỔ BIẾN NHẤT</span>
                     <h4>GÓI THÁNG</h4>
                     <div class="duration">Chạy DUY TRÌ / Dài hạn</div>
-                    <p style="color: var(--text-muted);">Ưu đãi giá cực tốt. Hỗ trợ kỹ thuật và bảo trì miễn phí suốt tháng.</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Ưu đãi giá tốt nhất. Cam kết hệ thống vận hành 24/7 ổn định suốt tháng.</p>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>© 2026 Telegram Automation Service. Hệ thống vận hành tự động.</p>
-            <p style="margin-top: 10px; color: var(--secondary-neon);">Contact: @TenVipQua</p>
+            <p>© 2026 Ken Media Telegram Services. Hệ thống vận hành tự động.</p>
+            <p style="color: var(--secondary-neon);">Contact: <span style="text-decoration: underline;">@TenVipQua</span></p>
         </footer>
 
     </div>

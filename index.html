@@ -35,6 +35,25 @@
             padding: 20px;
         }
 
+        /* --- KEYFRAMES HIỆU ỨNG CHỮ --- */
+        /* 1. Hiệu ứng nhấp nháy đèn Neon */
+        @keyframes neonFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 8px var(--secondary-neon), 0 0 15px var(--secondary-neon);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+                opacity: 0.7;
+            }
+        }
+
+        /* 2. Hiệu ứng chữ đổi màu động mượt mà */
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         /* Top Navigation Header */
         header {
             display: flex;
@@ -55,7 +74,7 @@
             font-weight: 800;
             letter-spacing: 1px;
             color: #fff;
-            text-shadow: 0 0 10px var(--secondary-neon);
+            animation: neonFlicker 3s infinite alternate;
         }
 
         .nav-logo-text span {
@@ -125,14 +144,18 @@
             text-align: left;
         }
 
+        /* Áp dụng hiệu ứng chữ đổi màu liên tục ở đây */
         .hero-text h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 0 0 15px var(--secondary-neon);
+            background: linear-gradient(45deg, #00f2fe, #9d4edd, #00f2fe);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 4s linear infinite;
         }
 
         .hero-text p.sub {
@@ -300,6 +323,17 @@
             gap: 15px;
         }
 
+        /* Tạo chữ đổi màu động cho phần Liên hệ ở footer */
+        .glow-text {
+            background: linear-gradient(45deg, #00f2fe, #9d4edd, #00f2fe);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 3s linear infinite;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
         /* Svg Icon Pack */
         .icon-svg {
             width: 32px;
@@ -313,7 +347,7 @@
             .nav-menu { display: none; }
             .hero-container { text-align: center; justify-content: center; }
             .hero-text { text-align: center; }
-            .hero-text h1 { font-size: 2rem; }
+            .hero-text h1 { font-size: 1.8rem; }
             .btn-cta { width: 100%; text-align: center; }
         }
     </style>
@@ -408,7 +442,7 @@
                 <div class="price-box">
                     <h4>GÓI TUẦN</h4>
                     <div class="duration">Chạy TEST / Ngắn hạn</div>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Thích hợp cho chiến dịch kéo mem cấp tốc, test hiệu quả bot.</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Thích hợp cho chiến dịch kéo mem cấp tốc, test hiệu quả bot hệ thống.</p>
                 </div>
                 <div class="price-box active">
                     <span class="badge-hot">PHỔ BIẾN NHẤT</span>
@@ -421,7 +455,7 @@
 
         <footer>
             <p>© 2026 Ken Media Telegram Services. Hệ thống vận hành tự động.</p>
-            <p style="color: var(--secondary-neon);">Contact: <span style="text-decoration: underline;">@TenVipQua</span></p>
+            <p style="color: var(--text-muted);">Contact: <a href="https://t.me/TenVipQua" target="_blank" class="glow-text">@TenVipQua</a></p>
         </footer>
 
     </div>

@@ -132,12 +132,13 @@
             color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 8px;
         }
 
         .card ul li::before {
             content: '⚡';
             color: var(--primary-neon);
+            margin-right: 10px; /* Sửa lỗi dính chữ ở đây */
+            flex-shrink: 0;
         }
 
         /* Bảng Giá / Thời gian */
@@ -207,17 +208,14 @@
 
     <div class="container">
         
-        <!-- Màn hình chính -->
         <section class="hero">
             <h1>QUẢNG CÁO & LÀM BOT</h1>
             <p>VÀO VIỆC NHANH - GỌN - UY TÍN</p>
             <a href="https://t.me/TenVipQua" target="_blank" class="btn-cta">🚀 INBOX: @TenVipQua NGAY</a>
         </section>
 
-        <!-- Danh sách dịch vụ -->
         <section class="services-grid">
             
-            <!-- Card 1 -->
             <div class="card">
                 <h3>🤖 LÀM BOT & BÁN SRC</h3>
                 <ul>
@@ -227,7 +225,6 @@
                 </ul>
             </div>
 
-            <!-- Card 2 -->
             <div class="card">
                 <h3>📢 QUẢNG CÁO & MEM</h3>
                 <ul>
@@ -237,7 +234,6 @@
                 </ul>
             </div>
 
-            <!-- Card 3 -->
             <div class="card">
                 <h3>⚙️ TOOL AUTOMATION</h3>
                 <ul>
@@ -247,7 +243,6 @@
                 </ul>
             </div>
 
-            <!-- Card 4 -->
             <div class="card">
                 <h3>💳 SET UP CẤU HÌNH</h3>
                 <ul>
@@ -259,7 +254,6 @@
 
         </section>
 
-        <!-- Phần thời gian / gói dịch vụ -->
         <section class="pricing-section">
             <h2>⏱️ THỜI GIAN TRIỂN KHAI LINH HOẠT</h2>
             <div class="price-container">
@@ -276,7 +270,6 @@
             </div>
         </section>
 
-        <!-- Chân trang -->
         <footer>
             <p>© 2026 Telegram Automation Service. Hệ thống vận hành tự động.</p>
             <p style="margin-top: 10px; color: var(--secondary-neon);">Contact: @TenVipQua</p>
